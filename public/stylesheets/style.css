@@ -7,3 +7,28 @@ body {
 a {
   color: darkblue;
 }
+
+img{
+  max-width: 100%;
+}
+
+.add-favorite-form, #favorite-navigation, #fetch-picture-from {
+  margin: 10px 0 10px 0;
+}
+
+.add-favorite-form{
+  margin-bottom: 30px;
+}
+
+.fav-item{
+  padding: 20px 0 20px 0;
+}
+
+.fav-image{
+  width: 200px;
+  border: 2px solid;
+}
+
+.fav-data, .fav-title{
+  padding: 20px;
+}

@@ -9,6 +9,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var favorites = require('./routes/favorites');
 var usersRouter = require('./routes/users');
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 var app = express();
 
@@ -23,10 +24,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Configure persistent session storage
+var favorites_db_url = process.env.MONGO_URL;
+
+var store = new MongoDBStore({uri: favorites_db_url, collection: 'sessions'}, function(err){
+    if(err){
+        console.error('Error: can\'t connect to MongoDB to store favorites ' + err);
+    }
+});
+
 app.use(session({
     secret: 'top secret!',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    store: store
 }));
 
 app.use('/', indexRouter);
