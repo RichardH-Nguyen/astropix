@@ -22,7 +22,7 @@ router.post('/add', function(req, res, next){
     });
 
     //If date isn't in favorites array
-    if(favorite_on_date === 0 ){
+    if(favorite_on_date.length === 0 ){
         req.session.favorites.push(req.body);
     }
 
