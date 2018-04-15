@@ -10,10 +10,18 @@
 
             <span class="fav-title">{{this.title}}</span>
             <span class="fav-data">{{this.date}}</span>
+
         </div>
+        <form method="POST" action="/favorites/delete">
+            <button type="submit" name="'delete">Delete</button>
+            <input type="hidden" name="date" value="{{this.date}}">
+        </form>
 
     {{else}}
         <p>No favorites saved yet.</p>
 
     {{/each}}
+    <form method="POST" action="favorites/deleteAll">
+        <button type="submit" name="btn-deleteAll">Delete All Favorites</button>
+    </form>
 </div>

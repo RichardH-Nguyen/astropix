@@ -21,11 +21,27 @@ router.post('/add', function(req, res, next){
         return fav.date === req.body.date
     });
 
-    //If date isn't in favorites array
+    //If date isn't in favorites array, add to array
     if(favorite_on_date.length === 0 ){
         req.session.favorites.push(req.body);
     }
 
+    res.redirect('/favorites')
+});
+
+router.post('/delete', function( req, res, next){
+    for(var i = 0 ; i < req.session.favorites.length - 1 ; i++){
+        if(req.session.favorites[i].date === req.body.date){
+            req.session.favorites.splice(i, 1);
+        }
+    }
+    res.redirect('/favorites');
+});
+
+router.post('/deleteAll', function(req, res, next){
+    var length = req.session.favorites.length;
+
+    req.session.favorites.splice(0, length);
     res.redirect('/favorites')
 });
 
