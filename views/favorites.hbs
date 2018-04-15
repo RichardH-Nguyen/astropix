@@ -21,7 +21,10 @@
         <p>No favorites saved yet.</p>
 
     {{/each}}
+
+    {{#if favorites}}
     <form method="POST" action="favorites/deleteAll">
         <button type="submit" name="btn-deleteAll">Delete All Favorites</button>
     </form>
+    {{/if}}
 </div>

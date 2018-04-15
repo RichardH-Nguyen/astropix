@@ -32,3 +32,10 @@ img{
 .fav-data, .fav-title{
   padding: 20px;
 }
+button{
+  margin-bottom: 5px;
+}
+
+button:hover{
+  background-color: darkcyan;
+}
